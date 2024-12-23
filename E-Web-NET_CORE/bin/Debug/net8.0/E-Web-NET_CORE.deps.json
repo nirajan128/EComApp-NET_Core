@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "E-Web-NET_CORE/1.0.0": {
+        "runtime": {
+          "E-Web-NET_CORE.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "E-Web-NET_CORE/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

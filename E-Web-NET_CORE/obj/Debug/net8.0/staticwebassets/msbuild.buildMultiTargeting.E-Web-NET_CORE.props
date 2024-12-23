@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\E-Web-NET_CORE.props" />
+</Project>
