@@ -12,6 +12,8 @@ namespace E_Web_NET_CORE.Models
 
         [Key] //optional, since the peoperty name is Id
         public int Id { get; set; }
+
+        [Required] //Sets the propety rule to not null when run in sql script
         public string Name { get; set; }
         public int DisplayOrder { get; set; }
     }
