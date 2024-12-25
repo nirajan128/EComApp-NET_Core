@@ -1,7 +1,13 @@
+using E_Web_NET_CORE.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Adds dbcontext to the application and uses options provided by entity frame work
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))); //uses GetconnectionSTring method to get connection strings from appsetting.json
 
 var app = builder.Build();
 
