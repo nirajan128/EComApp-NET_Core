@@ -1,6 +1,4 @@
-﻿using E_Web_NET_CORE.Data;
-using E_Web_NET_CORE.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace E_Web_NET_CORE.Controllers
 {

@@ -34,7 +34,10 @@ C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\refint\E-W
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\E-Web-NET_CORE.pdb
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\E-Web-NET_CORE.genruntimeconfig.cache
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\ref\E-Web-NET_CORE.dll
+<<<<<<< HEAD
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\E-Web-NET_CORE.csproj.AssemblyReference.cache
+=======
+>>>>>>> f5a4c4e91e902b344c7c799244c1083944f1533e
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\Humanizer.dll
@@ -171,4 +174,8 @@ C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\runtimes\w
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+<<<<<<< HEAD
+=======
+C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\E-Web-NET_CORE.csproj.AssemblyReference.cache
+>>>>>>> f5a4c4e91e902b344c7c799244c1083944f1533e
 C:\Users\niraj\OneDrive\Desktop\Bulky\E-Web-NET_CORE\obj\Debug\net8.0\E-Web-NE.0DADB61F.Up2Date
