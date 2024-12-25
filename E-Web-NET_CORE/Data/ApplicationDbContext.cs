@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using E_Web_NET_CORE.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace E_Web_NET_CORE.Data
 {
@@ -9,5 +10,11 @@ namespace E_Web_NET_CORE.Data
         {
             
         }
+
+        //Creates aproperty of generic DbSet Category class type
+        //which creates a table
+        //TO ADD TABLE TO DATABASE USE [ ADD-MIGRATION, MEANING FUL NAME] COMMAND IN NUGET PACKAGE MANAGER TERMINAL
+        //nOW ENTER UPDATE-DATABASE TO APPLY THE MIGRATION TO THE DATABASE WHICH WILL ADD THE THE TABLE
+        public DbSet<Category> Categories { get; set; }
     }
 }
