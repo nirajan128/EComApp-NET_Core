@@ -41,6 +41,7 @@ namespace E_Web_NET_CORE.Controllers
             {
                 _db.Categories.Add(obj); //Method of entity fame work: Keeps track of the changes
                 _db.SaveChanges(); //Goes to the db and make changes
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index"); //Redirects to Index ation of category controller
             }
             return View(); //if model is not valid it stays on the create view
@@ -70,6 +71,7 @@ namespace E_Web_NET_CORE.Controllers
             if (ModelState.IsValid) {
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category Edited Successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -104,6 +106,7 @@ namespace E_Web_NET_CORE.Controllers
             }
             _db.Categories.Remove(obj); //remove the object
             _db.SaveChanges(); //save changes in the database
+            TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
     }
