@@ -29,9 +29,20 @@ namespace E_Web_NET_CORE.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            _db.Categories.Add(obj); //Method of entity fame work: Keeps track of the changes
-            _db.SaveChanges(); //Goes to the db and make changes
-            return RedirectToAction("Index"); //Redirects to Index ation of category controller
+            //Customer error handling and validation
+            //checks if both field has same value
+            if (obj.Name == obj.DisplayOrder.ToString()) {
+                ModelState.AddModelError("Name", "DisplayOrder cannot match the category Name");
+            }
+
+            //IF state of the category Model is valid meaning it completes all validation requirements
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj); //Method of entity fame work: Keeps track of the changes
+                _db.SaveChanges(); //Goes to the db and make changes
+                return RedirectToAction("Index"); //Redirects to Index ation of category controller
+            }
+          return View(); //if model is not valid it stays on the create view
         }
     }
 }
