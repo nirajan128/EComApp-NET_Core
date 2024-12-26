@@ -6,11 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 // Adds dbcontext to the application and uses options provided by entity frame work
-<<<<<<< HEAD
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-=======
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
->>>>>>> f5a4c4e91e902b344c7c799244c1083944f1533e
     options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))); //uses GetconnectionSTring method to get connection strings from appsetting.json
 
 var app = builder.Build();
