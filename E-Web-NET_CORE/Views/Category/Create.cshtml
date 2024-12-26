@@ -1,5 +1,5 @@
 ﻿@model Category //By default if we do not give  param in the category create action controller, it will create a empty category class
-
+<!--ASP are Taghelpers-->
 <form action="/" method="post">
 	<div class="border p-3 mt-4">
 	<div class="row pb-2">
@@ -7,11 +7,12 @@
 		<hr />
 	</div>
 	<div class="row mb-3">
-		<label>Category Name</label>
-		<input type="text" class="form-control" />
+		<!--Asp for binds to a defined class property-->
+		<label asp-for="Name"></label>
+		<input asp-for="Name" class="form-control" />
 
-			<label>Display Order</label>
-			<input type="text" class="form-control" />
+			<label asp-for="DisplayOrder"></label>
+			<input asp-for="DisplayOrder" class="form-control" />
 	</div>
 	<div class="row">
 		<div class="col-6 col-md-3">

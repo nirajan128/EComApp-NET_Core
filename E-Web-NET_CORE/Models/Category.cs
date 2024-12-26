@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace E_Web_NET_CORE.Models
 {
@@ -14,7 +15,10 @@ namespace E_Web_NET_CORE.Models
         public int Id { get; set; }
 
         [Required] //Sets the propety rule to not null when run in sql script
+        [DisplayName("Category Name")]
         public string Name { get; set; }
+
+        [DisplayName("Display Order")] //Display Name is used to show the property Name differently
         public int DisplayOrder { get; set; }
     }
 }
