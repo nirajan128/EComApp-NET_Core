@@ -20,6 +20,7 @@ namespace E_Web_NET_CORE.Controllers
             return View(objCategoryList);
         }
 
+        //http get
         public IActionResult Create()
         {
             return View();
@@ -44,5 +45,24 @@ namespace E_Web_NET_CORE.Controllers
             }
           return View(); //if model is not valid it stays on the create view
         }
+
+
+        //http get
+        public IActionResult Edit(int? id) {
+
+            //Checks if the provided paramenter is valid
+            if (id == null || id == 0) 
+            {
+                return NotFound();
+            }
+            Category categoryFromDb = _db.Categories.Find(id); //find the category onject in db based on the id
+            if (categoryFromDb == null) {
+             return NotFound();
+            }
+
+
+          return View(categoryFromDb);
+        }
+
     }
 }
