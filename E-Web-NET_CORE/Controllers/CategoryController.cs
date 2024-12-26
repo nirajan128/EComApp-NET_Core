@@ -24,5 +24,14 @@ namespace E_Web_NET_CORE.Controllers
         {
             return View();
         }
+
+        //Used for post requests/method
+        [HttpPost]
+        public IActionResult Create(Category obj)
+        {
+            _db.Categories.Add(obj); //Method of entity fame work: Keeps track of the changes
+            _db.SaveChanges(); //Goes to the db and make changes
+            return RedirectToAction("Index"); //Redirects to Index ation of category controller
+        }
     }
 }
