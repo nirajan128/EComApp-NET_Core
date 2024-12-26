@@ -11,7 +11,7 @@ namespace E_Web_NET_CORE.Controllers
         //Connects to the database using the services from program.cs adn applicationDbContext.cs
         public CategoryController(ApplicationDbContext db)
         {
-            _db  = db; //connection
+            _db = db; //connection
         }
         public IActionResult Index()
         {
@@ -43,7 +43,7 @@ namespace E_Web_NET_CORE.Controllers
                 _db.SaveChanges(); //Goes to the db and make changes
                 return RedirectToAction("Index"); //Redirects to Index ation of category controller
             }
-          return View(); //if model is not valid it stays on the create view
+            return View(); //if model is not valid it stays on the create view
         }
 
 
@@ -51,18 +51,60 @@ namespace E_Web_NET_CORE.Controllers
         public IActionResult Edit(int? id) {
 
             //Checks if the provided paramenter is valid
-            if (id == null || id == 0) 
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             Category categoryFromDb = _db.Categories.Find(id); //find the category onject in db based on the id
             if (categoryFromDb == null) {
-             return NotFound();
+                return NotFound();
             }
 
 
-          return View(categoryFromDb);
+            return View(categoryFromDb);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid) {
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        //http get
+        public IActionResult Delete(int? id)
+        {
+
+            //Checks if the provided paramenter is valid
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Category categoryFromDb = _db.Categories.Find(id); //find the category onject in db based on the id
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(categoryFromDb);
+        }
+
+        [HttpPost, ActionName("Delete")] //Specifies the name of the action since we have a different actionName
+        public IActionResult DeletePOST(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+            if (obj == null) 
+            {
+                return NotFound();
+            }
+            _db.Categories.Remove(obj); //remove the object
+            _db.SaveChanges(); //save changes in the database
+            return RedirectToAction("Index");
+        }
     }
 }

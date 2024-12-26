@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("E-Web-NET_CORE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58810d9862690165cbcc9ef44fe82446b308a1fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88f89be86e032754c4c252567dd6c9e22af9ef60")]
 [assembly: System.Reflection.AssemblyProductAttribute("E-Web-NET_CORE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("E-Web-NET_CORE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
