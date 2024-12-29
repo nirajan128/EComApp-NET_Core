@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace E_Web_NET_CORE.Migrations
+namespace Bulky.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategortTableToDb : Migration

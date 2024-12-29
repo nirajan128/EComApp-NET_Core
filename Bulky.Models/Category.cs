@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace E_Web_NET_CORE.Models
+namespace Bulky.Models
 {
     //In MVC normarlly models are used to create table in database
     //The table: category, columns are the porperty
@@ -20,7 +20,7 @@ namespace E_Web_NET_CORE.Models
         public string Name { get; set; }
 
         [DisplayName("Display Order")] //Display Name is used to show the property Name differently
-        [Range(1,100, ErrorMessage ="The Input must be between 1 and 100")]
+        [Range(1, 100, ErrorMessage = "The Input must be between 1 and 100")]
         public int DisplayOrder { get; set; }
     }
 }

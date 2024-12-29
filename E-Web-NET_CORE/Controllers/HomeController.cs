@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using E_Web_NET_CORE.Models;
+using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_Web_NET_CORE.Controllers

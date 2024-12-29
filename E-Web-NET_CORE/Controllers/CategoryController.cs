@@ -1,6 +1,6 @@
-﻿using E_Web_NET_CORE.Data;
-using E_Web_NET_CORE.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Bulky.DataAccess.Data;
+using Bulky.Models;
 
 namespace E_Web_NET_CORE.Controllers
 {

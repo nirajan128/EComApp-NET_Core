@@ -1,7 +1,7 @@
-﻿using E_Web_NET_CORE.Models;
+﻿using Bulky.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace E_Web_NET_CORE.Data
+namespace Bulky.DataAccess.Data
 {
     //Must implement DbContext class from entity framework, which is the root class
     public class ApplicationDbContext : DbContext
