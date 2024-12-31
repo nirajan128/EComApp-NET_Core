@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Bulky.DataAccess.Repository.IRepository
 {
     //Generic Interface where T is class
-    internal interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         //T-Category, Where T is a Category Class
         //Different method related to it
