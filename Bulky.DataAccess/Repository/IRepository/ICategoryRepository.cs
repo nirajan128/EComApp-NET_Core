@@ -13,6 +13,6 @@ namespace Bulky.DataAccess.Repository.IRepository
     {
         //IN Addition to the base method [Update and Save method are added to this Interface]
         public void Update(Category obj);
-        public void Save();
+      
     }
 }
