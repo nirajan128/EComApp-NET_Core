@@ -16,18 +16,19 @@ namespace Bulky.DataAccess.Repository
     {
         private ApplicationDbContext _db;
 
+        //Db connectio n used from application DbContext
         //Passes the db to the base class REpository
         public CategoryRepository(ApplicationDbContext db) : base(db) {
            _db = db;
         }
         public void Save()
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
 
         public void Update(Category obj)
         {
-            throw new NotImplementedException();
+           _db.Categories.Update(obj);
         }
     }
 }

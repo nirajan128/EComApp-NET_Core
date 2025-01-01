@@ -9,7 +9,7 @@ using Bulky.Models;
 //Since its a Interface it does not need implement the base method
 namespace Bulky.DataAccess.Repository.IRepository
 {
-    internal interface ICategoryRepository : IRepository<Category> //Where the type is Category class
+    public interface ICategoryRepository : IRepository<Category> //Where the type is Category class
     {
         //IN Addition to the base method [Update and Save method are added to this Interface]
         public void Update(Category obj);

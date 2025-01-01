@@ -1,22 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Bulky.DataAccess.Data;
 using Bulky.Models;
+using Bulky.DataAccess.Repository.IRepository;
 
 namespace E_Web_NET_CORE.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-
-        //Connects to the database using the services from program.cs adn applicationDbContext.cs
-        public CategoryController(ApplicationDbContext db)
+        //ICategory Repository from Repository is used to replace the application DB context in controller [Same REpository can be used for different controller]
+        //All the method except for [Update and Save ] are derived from base Interface Irepository
+        private readonly ICategoryRepository _categoryRepo;
+        public CategoryController(ICategoryRepository db)
         {
-            _db = db; //connection
+            _categoryRepo = db; //connection
         }
         public IActionResult Index()
         {
             //_db is the connection while Categories is the Table name in the database, .toList is the method used
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -39,8 +40,8 @@ namespace E_Web_NET_CORE.Controllers
             //IF state of the category Model is valid meaning it completes all validation requirements
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj); //Method of entity fame work: Keeps track of the changes
-                _db.SaveChanges(); //Goes to the db and make changes
+                _categoryRepo.Add(obj); //Method of entity fame work: Keeps track of the changes
+                _categoryRepo.Save(); //Goes to the db and make changes
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index"); //Redirects to Index ation of category controller
             }
@@ -56,7 +57,7 @@ namespace E_Web_NET_CORE.Controllers
             {
                 return NotFound();
             }
-            Category categoryFromDb = _db.Categories.Find(id); //find the category onject in db based on the id
+            Category categoryFromDb = _categoryRepo.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
             if (categoryFromDb == null) {
                 return NotFound();
             }
@@ -69,8 +70,8 @@ namespace E_Web_NET_CORE.Controllers
         public IActionResult Edit(Category obj)
         {
             if (ModelState.IsValid) {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _categoryRepo.Update(obj); //Method of entity fame work: Keeps track of the changes
+                _categoryRepo.Save();
                 TempData["success"] = "Category Edited Successfully";
                 return RedirectToAction("Index");
             }
@@ -86,7 +87,7 @@ namespace E_Web_NET_CORE.Controllers
             {
                 return NotFound();
             }
-            Category categoryFromDb = _db.Categories.Find(id); //find the category onject in db based on the id
+            Category categoryFromDb = _categoryRepo.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -99,13 +100,13 @@ namespace E_Web_NET_CORE.Controllers
         [HttpPost, ActionName("Delete")] //Specifies the name of the action since we have a different actionName
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
+            Category? obj = _categoryRepo.GetFirstOrDefault(u => u.Id == id);
             if (obj == null) 
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj); //remove the object
-            _db.SaveChanges(); //save changes in the database
+            _categoryRepo.Remove(obj); //Method of entity fame work: Keeps track of the changes
+            _categoryRepo.Save();
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
