@@ -9,15 +9,15 @@ namespace E_Web_NET_CORE.Controllers
     {
         //ICategory Repository from Repository is used to replace the application DB context in controller [Same REpository can be used for different controller]
         //All the method except for [Update and Save ] are derived from base Interface Irepository
-        private readonly ICategoryRepository _categoryRepo;
-        public CategoryController(ICategoryRepository db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepo = db; //connection
+            _unitOfWork = unitOfWork; //connection
         }
         public IActionResult Index()
         {
             //_db is the connection while Categories is the Table name in the database, .toList is the method used
-            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -40,8 +40,8 @@ namespace E_Web_NET_CORE.Controllers
             //IF state of the category Model is valid meaning it completes all validation requirements
             if (ModelState.IsValid)
             {
-                _categoryRepo.Add(obj); //Method of entity fame work: Keeps track of the changes
-                _categoryRepo.Save(); //Goes to the db and make changes
+                _unitOfWork.Category.Add(obj); //Method of entity fame work: Keeps track of the changes
+                _unitOfWork.Save(); //Goes to the db and make changes
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index"); //Redirects to Index ation of category controller
             }
@@ -57,7 +57,7 @@ namespace E_Web_NET_CORE.Controllers
             {
                 return NotFound();
             }
-            Category categoryFromDb = _categoryRepo.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
+            Category categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
             if (categoryFromDb == null) {
                 return NotFound();
             }
@@ -70,8 +70,8 @@ namespace E_Web_NET_CORE.Controllers
         public IActionResult Edit(Category obj)
         {
             if (ModelState.IsValid) {
-                _categoryRepo.Update(obj); //Method of entity fame work: Keeps track of the changes
-                _categoryRepo.Save();
+                _unitOfWork.Category.Update(obj); //Method of entity fame work: Keeps track of the changes
+                _unitOfWork.Save();
                 TempData["success"] = "Category Edited Successfully";
                 return RedirectToAction("Index");
             }
@@ -87,7 +87,7 @@ namespace E_Web_NET_CORE.Controllers
             {
                 return NotFound();
             }
-            Category categoryFromDb = _categoryRepo.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
+            Category categoryFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -100,13 +100,13 @@ namespace E_Web_NET_CORE.Controllers
         [HttpPost, ActionName("Delete")] //Specifies the name of the action since we have a different actionName
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _categoryRepo.GetFirstOrDefault(u => u.Id == id);
+            Category? obj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
             if (obj == null) 
             {
                 return NotFound();
             }
-            _categoryRepo.Remove(obj); //Method of entity fame work: Keeps track of the changes
-            _categoryRepo.Save();
+            _unitOfWork.Category.Remove(obj); //Method of entity fame work: Keeps track of the changes
+            _unitOfWork.Save();
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }

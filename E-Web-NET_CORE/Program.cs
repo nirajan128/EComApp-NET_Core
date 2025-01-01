@@ -21,7 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //Singleton: The state stays same for the lifecycle of application
 //Add scope parameter takes and Interface and a class as a param
 //Anycalass using ICategoryRepository is implemnting CategoryRepository class
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitofWork>();
 
 var app = builder.Build();
 
