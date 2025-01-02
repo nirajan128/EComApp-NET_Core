@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bulky.DataAccess.Data;
 using Bulky.DataAccess.Repository.IRepository;
+using Bulky.Models;
 
 namespace Bulky.DataAccess.Repository
 {
@@ -13,12 +14,15 @@ namespace Bulky.DataAccess.Repository
         private ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }
 
+        public IProductRepository Product { get; private set; }
+
         //Dependency Injection
         //Db connectio n used from application DbContext
         public UnitofWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
+            Product = new ProductRepository(_db);
         }
 
 
