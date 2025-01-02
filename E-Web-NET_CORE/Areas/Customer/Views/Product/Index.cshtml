@@ -1,0 +1,45 @@
+﻿@model List<Product> //A model of list of category passed from the controller
+
+<partial name="_Notification" />
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2>Category</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Category</a>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>ISBN</th>
+                <th>ListPrice</th>
+                <th>Price</th>
+                <th>Price50</th>
+                <th>Price100</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Use to use C# in html-->
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.Title</td>
+                    <td>@obj.Description</td>
+                    <td>@obj.ISBN</td>
+                    <td>@obj.ListPrice</td>
+                    <td>@obj.Price</td>
+                    <td>@obj.Price50</td>
+                    <td>@obj.Price100</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
