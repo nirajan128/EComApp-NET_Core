@@ -20,5 +20,23 @@ namespace E_Web_NET_CORE.Areas.Customer.Controllers
             List<Product> objProductList = _unitOfWork.Product.GetAll().ToList();
             return View(objProductList);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product obj) {
+            //IF state of the category Model is valid meaning it completes all validation requirements
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Product.Add(obj); //Method of entity fame work: Keeps track of the changes
+                _unitOfWork.Save(); //Goes to the db and make changes
+                TempData["success"] = "Category Created Successfully";
+                return RedirectToAction("Index"); //Redirects to Index ation of category controller
+            }
+            return View(); //if model is not valid it stays on the create view
+        }
     }
 }

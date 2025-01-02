@@ -29,7 +29,7 @@ namespace Bulky.Models
         public string ISBN { get; set; }
 
         [Required]
-        [Display(Name = "Price for 1-50")]
+        [Display(Name = "List Price")]
         [Range(1, 1000)]
         public double ListPrice { get; set; }
 
