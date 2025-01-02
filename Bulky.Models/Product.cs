@@ -9,7 +9,7 @@ namespace Bulky.Models
 {
     //In MVC normarlly models are used to create table in database
     //The table: category, columns are the porperty
-    internal class Product
+    public class Product
     {
         [Key] //optional, since the peoperty name is Id
         public int Id { get; set; }
@@ -19,12 +19,33 @@ namespace Bulky.Models
         //Entity framework automatically thinks its a primary key
         [Required]
         public string Title { get; set; }
-        public string Description { get; set; }
-
-        [Required]
-        public int ISBN { get; set; }
 
         [Required]
         public string Author { get; set; }
+
+        public string Description { get; set; }
+
+        [Required]
+        public string ISBN { get; set; }
+
+        [Required]
+        [Display(Name = "Price for 1-50")]
+        [Range(1, 1000)]
+        public double ListPrice { get; set; }
+
+        [Required]
+        [Display(Name = "Price for 1-50")]
+        [Range(1,1000)]
+        public double Price {  get; set; }
+
+        [Required]
+        [Display(Name = "Price for 50")]
+        [Range(1, 1000)]
+        public double Price50 { get; set; }
+
+        [Required]
+        [Display(Name = "Price for 100")]
+        [Range(1, 1000)]
+        public double Price100 { get; set; }
     }
 }
