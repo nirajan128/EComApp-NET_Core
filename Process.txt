@@ -1,3 +1,14 @@
 1. Divide project into class Library [Model, DataAccess, Utilities]
-2. In the Model classLibray create applicationDbContext class which is the connection to the database
+
+2. In the Model classLibray create applicationDbContext class which is the connection to the database, and create a
+   table sing DB set and the model
+
 3. In appsetting .json add connection string
+   Add the service in program.cs
+
+3. Add a repository for each Models
+   Repository: uses Dependency Injection
+               Interface and Classes
+               Add the service to program.cs
+
+4. IF there are different section of program create an Area

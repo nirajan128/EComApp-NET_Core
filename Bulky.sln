@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulky.Models", "Bulky.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bulky.Utilities", "Bulky.Utilities\Bulky.Utilities.csproj", "{31E5CD89-CA0D-4D6D-AE0D-85DB107AF730}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D42BE972-A146-4C18-AC95-B8EEDF847E86}"
+	ProjectSection(SolutionItems) = preProject
+		Process.txt = Process.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
