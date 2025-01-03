@@ -67,5 +67,38 @@ namespace E_Web_NET_CORE.Areas.Customer.Controllers
             }
             return View();
         }
+
+        //http get
+        public IActionResult Delete(int? id)
+        {
+
+            //Checks if the provided paramenter is valid
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Product productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
+            if (productFromDb == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(productFromDb);
+        }
+
+        [HttpPost, ActionName("Delete")] //Specifies the name of the action since we have a different actionName
+        public IActionResult DeletePOST(int? id)
+        {
+            Product? obj = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Product.Remove(obj); //Method of entity fame work: Keeps track of the changes
+            _unitOfWork.Save();
+            TempData["success"] = "Category Deleted Successfully";
+            return RedirectToAction("Index");
+        }
     }
 }
