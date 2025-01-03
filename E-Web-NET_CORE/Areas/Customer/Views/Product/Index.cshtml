@@ -37,8 +37,20 @@
                     <td>@obj.Price</td>
                     <td>@obj.Price50</td>
                     <td>@obj.Price100</td>
+                    <td>
+                        <div class="w-75 btn-group">
+                            <!--asp-route passes object Id to the Edit Action in the category controller
+                                is the parameter passed in action method
+                            -->
+                            <a asp-controller="Product" asp-route-Id="@obj.Id" asp-action="Edit" class="btn btn-primary mx-2">
+                                <i class="bi bi-pencil-square"></i>Edit
+                            </a>
+                        </div>
+                    </td>
                 </tr>
+
             }
+
         </tbody>
 
     </table>

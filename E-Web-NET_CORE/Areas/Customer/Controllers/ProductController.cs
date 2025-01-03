@@ -38,5 +38,34 @@ namespace E_Web_NET_CORE.Areas.Customer.Controllers
             }
             return View(); //if model is not valid it stays on the create view
         }
+
+        //httpGet
+        public IActionResult Edit(int? id)
+        {//Checks if the provided paramenter is valid
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Product productFromDb = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id); //find the category onject in db based on the id
+            if (productFromDb == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(productFromDb);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product obj) {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Product.Update(obj); //Method of entity fame work: Keeps track of the changes
+                _unitOfWork.Save();
+                TempData["success"] = "Product Edited Successfully";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
